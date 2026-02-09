@@ -61,4 +61,7 @@ coverage/
 .parcel-cache
 .turbo/
 dist-ssr/
+<<<<<<< HEAD
 node_modules
+=======
+>>>>>>> a3b7be64b38cb2aca40e55482cd8f30f715c1957
