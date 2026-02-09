@@ -18,13 +18,13 @@ export default function DashboardLayout({ children, title, userRole, icon }) {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
+    <div className="dashboard-layout">
       {/* Header */}
-      <header className="bg-white border-b border-gray-200 sticky top-0 z-10 shadow-sm">
+      <header className="dashboard-header">
         <div className="px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="bg-gradient-to-br from-indigo-600 to-indigo-700 p-2.5 rounded-xl shadow-md">
+              <div className="icon-container">
                 {icon}
               </div>
               <div>
@@ -72,7 +72,7 @@ export default function DashboardLayout({ children, title, userRole, icon }) {
       </header>
 
       {/* Main Content */}
-      <main className="p-6 max-w-[1600px] mx-auto">
+      <main className="dashboard-main">
         {children}
       </main>
     </div>

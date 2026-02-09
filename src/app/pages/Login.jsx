@@ -37,19 +37,19 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 relative">
+    <div className="login-container">
       {/* Background Image */}
-      <div className="absolute inset-0 z-0">
+      <div className="login-background">
         <ImageWithFallback
           src="https://images.unsplash.com/photo-1770192114412-464cf380bb2b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwaGFybWFjZXV0aWNhbCUyMGxhYm9yYXRvcnklMjBjbGVhbiUyMG1vZGVybnxlbnwxfHx8fDE3NzA0MTc3NjB8MA&ixlib=rb-4.1.0&q=80&w=1080"
           alt="Pharmaceutical Laboratory"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-black/50"></div>
+        <div className="login-background-overlay"></div>
       </div>
 
       {/* Login Card */}
-      <Card className="w-full max-w-md relative z-10 shadow-2xl">
+      <Card className="login-card">
         <CardHeader className="text-center space-y-3">
           <div className="flex justify-center items-center gap-2">
             <Package className="h-8 w-8 text-indigo-600" />
