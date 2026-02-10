@@ -1,4 +1,5 @@
 import DashboardLayout from "../components/DashboardLayout.jsx";
+import "../../styles/dashboards.css";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/ui/card.jsx";
 import { Button } from "../components/ui/button.jsx";
 import { Input } from "../components/ui/input.jsx";
@@ -44,65 +45,65 @@ export default function DistributorDashboard() {
       userRole="Shipment & Inventory Management"
       icon={<Truck className="h-6 w-6 text-white" />}
     >
-      <div className="space-y-6">
+      <div className="manufacturer-dashboard">
         {/* Stats Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          <Card className="bg-gradient-to-br from-cyan-50 to-cyan-100 border border-cyan-200 shadow-md hover:shadow-lg transition-shadow">
-            <CardHeader className="flex flex-row items-center justify-between pb-2">
-              <CardTitle className="text-sm font-medium text-cyan-900">Active Shipments</CardTitle>
-              <div className="bg-cyan-500 p-2 rounded-lg">
+        <div className="manufacturer-stats-row">
+          <Card className="manufacturer-stat-card manufacturer-stat-card--distributor-cyan">
+            <CardHeader className="stat-card-header">
+              <CardTitle className="stat-card-title manufacturer-stat-card__title--cyan">Active Shipments</CardTitle>
+              <div className="stat-card-icon stat-card-icon-cyan">
                 <Truck className="h-5 w-5 text-white" />
               </div>
             </CardHeader>
-            <CardContent>
-              <div className="text-3xl font-bold text-cyan-900">47</div>
-              <p className="text-xs text-cyan-600 mt-1">12 incoming, 35 outgoing</p>
+            <CardContent className="stat-card-body">
+              <div className="stat-card-value stat-card-value--cyan">47</div>
+              <p className="stat-card-subtext stat-card-subtext--cyan">12 incoming, 35 outgoing</p>
             </CardContent>
           </Card>
 
-          <Card className="bg-gradient-to-br from-emerald-50 to-emerald-100 border border-emerald-200 shadow-md hover:shadow-lg transition-shadow">
-            <CardHeader className="flex flex-row items-center justify-between pb-2">
-              <CardTitle className="text-sm font-medium text-emerald-900">Inventory Level</CardTitle>
-              <div className="bg-emerald-500 p-2 rounded-lg">
+          <Card className="manufacturer-stat-card manufacturer-stat-card--production">
+            <CardHeader className="stat-card-header">
+              <CardTitle className="stat-card-title manufacturer-stat-card__title--emerald">Inventory Level</CardTitle>
+              <div className="stat-card-icon stat-card-icon-emerald">
                 <PackageCheck className="h-5 w-5 text-white" />
               </div>
             </CardHeader>
-            <CardContent>
-              <div className="text-3xl font-bold text-emerald-900">49K</div>
-              <p className="text-xs text-emerald-600 mt-1">Units in warehouse</p>
+            <CardContent className="stat-card-body">
+              <div className="stat-card-value stat-card-value--emerald">49K</div>
+              <p className="stat-card-subtext stat-card-subtext--emerald">Units in warehouse</p>
             </CardContent>
           </Card>
 
-          <Card className="bg-gradient-to-br from-amber-50 to-amber-100 border border-amber-200 shadow-md hover:shadow-lg transition-shadow">
-            <CardHeader className="flex flex-row items-center justify-between pb-2">
-              <CardTitle className="text-sm font-medium text-amber-900">Pending Deliveries</CardTitle>
-              <div className="bg-amber-500 p-2 rounded-lg">
+          <Card className="manufacturer-stat-card manufacturer-stat-card--distributor-amber">
+            <CardHeader className="stat-card-header">
+              <CardTitle className="stat-card-title manufacturer-stat-card__title--amber">Pending Deliveries</CardTitle>
+              <div className="stat-card-icon stat-card-icon-amber">
                 <Clock className="h-5 w-5 text-white" />
               </div>
             </CardHeader>
-            <CardContent>
-              <div className="text-3xl font-bold text-amber-900">23</div>
-              <p className="text-xs text-amber-600 mt-1">Awaiting dispatch</p>
+            <CardContent className="stat-card-body">
+              <div className="stat-card-value stat-card-value--amber">23</div>
+              <p className="stat-card-subtext stat-card-subtext--amber">Awaiting dispatch</p>
             </CardContent>
           </Card>
 
-          <Card className="bg-gradient-to-br from-purple-50 to-purple-100 border border-purple-200 shadow-md hover:shadow-lg transition-shadow">
-            <CardHeader className="flex flex-row items-center justify-between pb-2">
-              <CardTitle className="text-sm font-medium text-purple-900">On-Time Rate</CardTitle>
-              <div className="bg-purple-500 p-2 rounded-lg">
+          <Card className="manufacturer-stat-card manufacturer-stat-card--distributor-purple">
+            <CardHeader className="stat-card-header">
+              <CardTitle className="stat-card-title manufacturer-stat-card__title--purple">On-Time Rate</CardTitle>
+              <div className="stat-card-icon stat-card-icon-purple">
                 <TrendingUp className="h-5 w-5 text-white" />
               </div>
             </CardHeader>
-            <CardContent>
-              <div className="text-3xl font-bold text-purple-900">96.5%</div>
-              <p className="text-xs text-purple-600 mt-1">Last 30 days</p>
+            <CardContent className="stat-card-body">
+              <div className="stat-card-value stat-card-value--purple">96.5%</div>
+              <p className="stat-card-subtext stat-card-subtext--purple">Last 30 days</p>
             </CardContent>
           </Card>
         </div>
 
         {/* Main Content */}
-        <Tabs defaultValue="incoming" className="space-y-4">
-          <TabsList>
+        <Tabs defaultValue="incoming" className="manufacturer-tabs">
+          <TabsList className="manufacturer-tabs-list">
             <TabsTrigger value="incoming">Incoming Shipments</TabsTrigger>
             <TabsTrigger value="outgoing">Outgoing Shipments</TabsTrigger>
             <TabsTrigger value="inventory">Inventory</TabsTrigger>
@@ -111,13 +112,14 @@ export default function DistributorDashboard() {
 
           {/* Incoming Shipments */}
           <TabsContent value="incoming" className="space-y-4">
-            <Card>
-              <CardHeader>
-                <CardTitle>Incoming Shipments</CardTitle>
-                <CardDescription>Manage products received from manufacturers</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <Table>
+            <div className="manufacturer-batches-full">
+              <Card className="manufacturer-batches-card">
+                <CardHeader>
+                  <CardTitle>Incoming Shipments</CardTitle>
+                  <CardDescription>Manage products received from manufacturers</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <Table>
                   <TableHeader>
                     <TableRow>
                       <TableHead>Shipment ID</TableHead>
@@ -130,61 +132,65 @@ export default function DistributorDashboard() {
                       <TableHead>Actions</TableHead>
                     </TableRow>
                   </TableHeader>
-                  <TableBody>
-                    {incomingShipments.map((shipment) => (
-                      <TableRow key={shipment.id}>
-                        <TableCell className="font-mono text-sm">{shipment.id}</TableCell>
-                        <TableCell className="font-mono text-sm">{shipment.batch}</TableCell>
-                        <TableCell>{shipment.from}</TableCell>
-                        <TableCell>{shipment.product}</TableCell>
-                        <TableCell>{shipment.quantity.toLocaleString()}</TableCell>
-                        <TableCell>{shipment.eta}</TableCell>
-                        <TableCell>
-                          <Badge variant={shipment.status === "Arrived" ? "default" : shipment.status === "In Transit" ? "secondary" : "outline"}>
-                            {shipment.status}
-                          </Badge>
-                        </TableCell>
-                        <TableCell>
-                          <Button size="sm" variant="outline">
-                            <PackageCheck className="h-4 w-4" />
-                          </Button>
-                        </TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </CardContent>
-            </Card>
+                    <TableBody>
+                      {incomingShipments.map((shipment) => (
+                        <TableRow key={shipment.id}>
+                          <TableCell className="font-mono text-sm">{shipment.id}</TableCell>
+                          <TableCell className="font-mono text-sm">{shipment.batch}</TableCell>
+                          <TableCell>{shipment.from}</TableCell>
+                          <TableCell>{shipment.product}</TableCell>
+                          <TableCell>{shipment.quantity.toLocaleString()}</TableCell>
+                          <TableCell>{shipment.eta}</TableCell>
+                          <TableCell>
+                            <Badge variant={shipment.status === "Arrived" ? "default" : shipment.status === "In Transit" ? "secondary" : "outline"}>
+                              {shipment.status}
+                            </Badge>
+                          </TableCell>
+                          <TableCell>
+                            <Button size="sm" variant="outline">
+                              <PackageCheck className="h-4 w-4" />
+                            </Button>
+                          </TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </CardContent>
+              </Card>
+            </div>
 
-            <Card>
-              <CardHeader>
-                <CardTitle>Weekly Shipment Activity</CardTitle>
-                <CardDescription>Incoming vs outgoing shipments</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ResponsiveContainer width="100%" height={300}>
-                  <LineChart data={shipmentData}>
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="day" />
-                    <YAxis />
-                    <Tooltip />
-                    <Line type="monotone" dataKey="incoming" stroke="#10B981" strokeWidth={2} />
-                    <Line type="monotone" dataKey="outgoing" stroke="#4F46E5" strokeWidth={2} />
-                  </LineChart>
-                </ResponsiveContainer>
-              </CardContent>
-            </Card>
+            <div className="manufacturer-batches-full">
+              <Card className="manufacturer-batches-card">
+                <CardHeader>
+                  <CardTitle>Weekly Shipment Activity</CardTitle>
+                  <CardDescription>Incoming vs outgoing shipments</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <ResponsiveContainer width="100%" height={300}>
+                    <LineChart data={shipmentData}>
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis dataKey="day" />
+                      <YAxis />
+                      <Tooltip />
+                      <Line type="monotone" dataKey="incoming" stroke="#10B981" strokeWidth={2} />
+                      <Line type="monotone" dataKey="outgoing" stroke="#4F46E5" strokeWidth={2} />
+                    </LineChart>
+                  </ResponsiveContainer>
+                </CardContent>
+              </Card>
+            </div>
           </TabsContent>
 
           {/* Outgoing Shipments */}
           <TabsContent value="outgoing" className="space-y-4">
-            <Card>
-              <CardHeader>
-                <CardTitle>Outgoing Shipments</CardTitle>
-                <CardDescription>Manage products dispatched to retailers and hospitals</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <Table>
+            <div className="manufacturer-batches-full">
+              <Card className="manufacturer-batches-card">
+                <CardHeader>
+                  <CardTitle>Outgoing Shipments</CardTitle>
+                  <CardDescription>Manage products dispatched to retailers and hospitals</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <Table>
                   <TableHeader>
                     <TableRow>
                       <TableHead>Shipment ID</TableHead>
@@ -197,36 +203,38 @@ export default function DistributorDashboard() {
                       <TableHead>Actions</TableHead>
                     </TableRow>
                   </TableHeader>
-                  <TableBody>
-                    {outgoingShipments.map((shipment) => (
-                      <TableRow key={shipment.id}>
-                        <TableCell className="font-mono text-sm">{shipment.id}</TableCell>
-                        <TableCell className="font-mono text-sm">{shipment.batch}</TableCell>
-                        <TableCell>{shipment.to}</TableCell>
-                        <TableCell>{shipment.product}</TableCell>
-                        <TableCell>{shipment.quantity.toLocaleString()}</TableCell>
-                        <TableCell>{shipment.eta}</TableCell>
-                        <TableCell>
-                          <Badge variant={shipment.status === "In Transit" ? "default" : shipment.status === "Ready" ? "secondary" : "outline"}>
-                            {shipment.status}
-                          </Badge>
-                        </TableCell>
-                        <TableCell>
-                          <Button size="sm" variant="outline">
-                            <MapPin className="h-4 w-4" />
-                          </Button>
-                        </TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </CardContent>
-            </Card>
+                    <TableBody>
+                      {outgoingShipments.map((shipment) => (
+                        <TableRow key={shipment.id}>
+                          <TableCell className="font-mono text-sm">{shipment.id}</TableCell>
+                          <TableCell className="font-mono text-sm">{shipment.batch}</TableCell>
+                          <TableCell>{shipment.to}</TableCell>
+                          <TableCell>{shipment.product}</TableCell>
+                          <TableCell>{shipment.quantity.toLocaleString()}</TableCell>
+                          <TableCell>{shipment.eta}</TableCell>
+                          <TableCell>
+                            <Badge variant={shipment.status === "In Transit" ? "default" : shipment.status === "Ready" ? "secondary" : "outline"}>
+                              {shipment.status}
+                            </Badge>
+                          </TableCell>
+                          <TableCell>
+                            <Button size="sm" variant="outline">
+                              <MapPin className="h-4 w-4" />
+                            </Button>
+                          </TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </CardContent>
+              </Card>
+            </div>
           </TabsContent>
 
-          {/* Inventory */}
-          <TabsContent value="inventory" className="space-y-4">
-            <Card>
+        {/* Inventory */}
+        <TabsContent value="inventory" className="space-y-4">
+          <div className="manufacturer-batches-full">
+            <Card className="manufacturer-batches-card">
               <CardHeader>
                 <CardTitle>Inventory Levels</CardTitle>
                 <CardDescription>Current warehouse stock levels over time</CardDescription>
@@ -243,6 +251,7 @@ export default function DistributorDashboard() {
                 </ResponsiveContainer>
               </CardContent>
             </Card>
+          </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <Card>
@@ -275,9 +284,10 @@ export default function DistributorDashboard() {
             </div>
           </TabsContent>
 
-          {/* Track Shipment */}
-          <TabsContent value="tracking" className="space-y-4">
-            <Card>
+        {/* Track Shipment */}
+        <TabsContent value="tracking" className="space-y-4">
+          <div className="manufacturer-batches-full">
+            <Card className="manufacturer-batches-card">
               <CardHeader>
                 <CardTitle>Track Shipment</CardTitle>
                 <CardDescription>Enter shipment ID or batch number to track</CardDescription>
@@ -299,6 +309,7 @@ export default function DistributorDashboard() {
                 </div>
               </CardContent>
             </Card>
+          </div>
           </TabsContent>
         </Tabs>
       </div>

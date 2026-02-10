@@ -1,4 +1,5 @@
 import DashboardLayout from "../components/DashboardLayout.jsx";
+import "../../styles/dashboards.css";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/ui/card.jsx";
 import { Button } from "../components/ui/button.jsx";
 import { Input } from "../components/ui/input.jsx";
@@ -50,119 +51,121 @@ export default function ManufacturerDashboard() {
       userRole="Production & Dispatch Management"
       icon={<Factory className="h-6 w-6 text-white" />}
     >
-      <div className="space-y-6">
+      <div className="manufacturer-dashboard">
         {/* Stats Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          <Card className="bg-gradient-to-br from-blue-50 to-blue-100 border border-blue-200 shadow-md hover:shadow-lg transition-shadow">
-            <CardHeader className="flex flex-row items-center justify-between pb-2">
-              <CardTitle className="text-sm font-medium text-blue-900">Total Batches</CardTitle>
-              <div className="bg-blue-500 p-2 rounded-lg">
+        <div className="manufacturer-stats-row">
+          <Card className="manufacturer-stat-card manufacturer-stat-card--batches">
+            <CardHeader className="stat-card-header">
+              <CardTitle className="stat-card-title manufacturer-stat-card__title--blue">Total Batches</CardTitle>
+              <div className="stat-card-icon stat-card-icon-blue">
                 <Package className="h-5 w-5 text-white" />
               </div>
             </CardHeader>
-            <CardContent>
-              <div className="text-3xl font-bold text-blue-900">1,247</div>
-              <p className="text-xs text-blue-600 mt-1 flex items-center gap-1">
-                <TrendingUp className="h-3 w-3" />
+            <CardContent className="stat-card-body">
+              <div className="stat-card-value stat-card-value--blue">1,247</div>
+              <p className="stat-card-subtext stat-card-subtext--blue">
+                <TrendingUp className="stat-card-trend-icon" />
                 +12% from last month
               </p>
             </CardContent>
           </Card>
 
-          <Card className="bg-gradient-to-br from-emerald-50 to-emerald-100 border border-emerald-200 shadow-md hover:shadow-lg transition-shadow">
-            <CardHeader className="flex flex-row items-center justify-between pb-2">
-              <CardTitle className="text-sm font-medium text-emerald-900">Active Production</CardTitle>
-              <div className="bg-emerald-500 p-2 rounded-lg">
+          <Card className="manufacturer-stat-card manufacturer-stat-card--production">
+            <CardHeader className="stat-card-header">
+              <CardTitle className="stat-card-title manufacturer-stat-card__title--emerald">Active Production</CardTitle>
+              <div className="stat-card-icon stat-card-icon-emerald">
                 <TrendingUp className="h-5 w-5 text-white" />
               </div>
             </CardHeader>
-            <CardContent>
-              <div className="text-3xl font-bold text-emerald-900">24</div>
-              <p className="text-xs text-emerald-600 mt-1">Lines currently running</p>
+            <CardContent className="stat-card-body">
+              <div className="stat-card-value stat-card-value--emerald">24</div>
+              <p className="stat-card-subtext stat-card-subtext--emerald">Lines currently running</p>
             </CardContent>
           </Card>
 
-          <Card className="bg-gradient-to-br from-violet-50 to-violet-100 border border-violet-200 shadow-md hover:shadow-lg transition-shadow">
-            <CardHeader className="flex flex-row items-center justify-between pb-2">
-              <CardTitle className="text-sm font-medium text-violet-900">Monthly Output</CardTitle>
-              <div className="bg-violet-500 p-2 rounded-lg">
+          <Card className="manufacturer-stat-card manufacturer-stat-card--output">
+            <CardHeader className="stat-card-header">
+              <CardTitle className="stat-card-title manufacturer-stat-card__title--violet">Monthly Output</CardTitle>
+              <div className="stat-card-icon stat-card-icon-violet">
                 <Factory className="h-5 w-5 text-white" />
               </div>
             </CardHeader>
-            <CardContent>
-              <div className="text-3xl font-bold text-violet-900">24K</div>
-              <p className="text-xs text-violet-600 mt-1">Units produced</p>
+            <CardContent className="stat-card-body">
+              <div className="stat-card-value stat-card-value--violet">24K</div>
+              <p className="stat-card-subtext stat-card-subtext--violet">Units produced</p>
             </CardContent>
           </Card>
 
-          <Card className="bg-gradient-to-br from-indigo-50 to-indigo-100 border border-indigo-200 shadow-md hover:shadow-lg transition-shadow">
-            <CardHeader className="flex flex-row items-center justify-between pb-2">
-              <CardTitle className="text-sm font-medium text-indigo-900">Compliance Rate</CardTitle>
-              <div className="bg-indigo-500 p-2 rounded-lg">
+          <Card className="manufacturer-stat-card manufacturer-stat-card--compliance">
+            <CardHeader className="stat-card-header">
+              <CardTitle className="stat-card-title manufacturer-stat-card__title--indigo">Compliance Rate</CardTitle>
+              <div className="stat-card-icon stat-card-icon-indigo">
                 <AlertCircle className="h-5 w-5 text-white" />
               </div>
             </CardHeader>
-            <CardContent>
-              <div className="text-3xl font-bold text-indigo-900">99.8%</div>
-              <p className="text-xs text-indigo-600 mt-1">FDA/WHO compliant</p>
+            <CardContent className="stat-card-body">
+              <div className="stat-card-value stat-card-value--indigo">99.8%</div>
+              <p className="stat-card-subtext stat-card-subtext--indigo">FDA/WHO compliant</p>
             </CardContent>
           </Card>
         </div>
 
         {/* Main Content Tabs */}
-        <Tabs defaultValue="batches" className="space-y-4">
-          <TabsList>
+        <Tabs defaultValue="batches" className="manufacturer-tabs">
+          <TabsList className="manufacturer-tabs-list">
             <TabsTrigger value="batches">Batch Management</TabsTrigger>
             <TabsTrigger value="dispatch">Dispatch New Batch</TabsTrigger>
             <TabsTrigger value="analytics">Production Analytics</TabsTrigger>
           </TabsList>
 
           {/* Batch Management */}
-          <TabsContent value="batches" className="space-y-4">
-            <Card>
-              <CardHeader>
-                <CardTitle>Recent Batches</CardTitle>
-                <CardDescription>Track and manage your product batches</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <Table>
-                  <TableHeader>
-                    <TableRow>
-                      <TableHead>Batch ID</TableHead>
-                      <TableHead>Product</TableHead>
-                      <TableHead>Quantity</TableHead>
-                      <TableHead>Mfg Date</TableHead>
-                      <TableHead>Expiry</TableHead>
-                      <TableHead>Destination</TableHead>
-                      <TableHead>Status</TableHead>
-                      <TableHead>Actions</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {batches.map((batch) => (
-                      <TableRow key={batch.id}>
-                        <TableCell className="font-mono text-sm">{batch.id}</TableCell>
-                        <TableCell>{batch.product}</TableCell>
-                        <TableCell>{batch.quantity.toLocaleString()}</TableCell>
-                        <TableCell>{batch.mfgDate}</TableCell>
-                        <TableCell>{batch.expiry}</TableCell>
-                        <TableCell>{batch.destination}</TableCell>
-                        <TableCell>
-                          <Badge variant={batch.status === "Active" ? "default" : batch.status === "In Transit" ? "secondary" : "outline"}>
-                            {batch.status}
-                          </Badge>
-                        </TableCell>
-                        <TableCell>
-                          <Button size="sm" variant="ghost" onClick={() => handleQRClick(batch)}>
-                            <QrCode className="h-4 w-4" />
-                          </Button>
-                        </TableCell>
+          <TabsContent value="batches">
+            <div className="manufacturer-batches-full">
+              <Card className="manufacturer-batches-card">
+                <CardHeader>
+                  <CardTitle>Recent Batches</CardTitle>
+                  <CardDescription>Track and manage your product batches</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <Table>
+                    <TableHeader>
+                      <TableRow>
+                        <TableHead>Batch ID</TableHead>
+                        <TableHead>Product</TableHead>
+                        <TableHead>Quantity</TableHead>
+                        <TableHead>Mfg Date</TableHead>
+                        <TableHead>Expiry</TableHead>
+                        <TableHead>Destination</TableHead>
+                        <TableHead>Status</TableHead>
+                        <TableHead>Actions</TableHead>
                       </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </CardContent>
-            </Card>
+                    </TableHeader>
+                    <TableBody>
+                      {batches.map((batch) => (
+                        <TableRow key={batch.id}>
+                          <TableCell className="font-mono text-sm">{batch.id}</TableCell>
+                          <TableCell>{batch.product}</TableCell>
+                          <TableCell>{batch.quantity.toLocaleString()}</TableCell>
+                          <TableCell>{batch.mfgDate}</TableCell>
+                          <TableCell>{batch.expiry}</TableCell>
+                          <TableCell>{batch.destination}</TableCell>
+                          <TableCell>
+                            <Badge variant={batch.status === "Active" ? "default" : batch.status === "In Transit" ? "secondary" : "outline"}>
+                              {batch.status}
+                            </Badge>
+                          </TableCell>
+                          <TableCell>
+                            <Button size="sm" variant="ghost" onClick={() => handleQRClick(batch)}>
+                              <QrCode className="h-4 w-4" />
+                            </Button>
+                          </TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </CardContent>
+              </Card>
+            </div>
           </TabsContent>
 
           {/* Dispatch New Batch */}

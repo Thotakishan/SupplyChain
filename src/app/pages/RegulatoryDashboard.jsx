@@ -1,4 +1,6 @@
 import DashboardLayout from "../components/DashboardLayout.jsx";
+import "../../styles/dashboards.css";
+import "../../styles/dashboards.css";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/ui/card.jsx";
 import { Button } from "../components/ui/button.jsx";
 import { Input } from "../components/ui/input.jsx";
@@ -53,68 +55,68 @@ export default function RegulatoryDashboard() {
       userRole="Compliance Monitoring & Reporting"
       icon={<Shield className="h-6 w-6 text-white" />}
     >
-      <div className="space-y-6">
+      <div className="manufacturer-dashboard">
         {/* Stats Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          <Card className="bg-gradient-to-br from-emerald-50 to-emerald-100 border border-emerald-200 shadow-md hover:shadow-lg transition-shadow">
-            <CardHeader className="flex flex-row items-center justify-between pb-2">
-              <CardTitle className="text-sm font-medium text-emerald-900">Overall Compliance</CardTitle>
-              <div className="bg-emerald-500 p-2 rounded-lg">
+        <div className="manufacturer-stats-row">
+          <Card className="manufacturer-stat-card manufacturer-stat-card--production">
+            <CardHeader className="stat-card-header">
+              <CardTitle className="stat-card-title manufacturer-stat-card__title--emerald">Overall Compliance</CardTitle>
+              <div className="stat-card-icon stat-card-icon-emerald">
                 <Shield className="h-5 w-5 text-white" />
               </div>
             </CardHeader>
-            <CardContent>
-              <div className="text-3xl font-bold text-emerald-900">99.5%</div>
-              <p className="text-xs text-emerald-600 mt-1 flex items-center gap-1">
-                <TrendingUp className="h-3 w-3" />
+            <CardContent className="stat-card-body">
+              <div className="stat-card-value stat-card-value--emerald">99.5%</div>
+              <p className="stat-card-subtext stat-card-subtext--emerald">
+                <TrendingUp className="stat-card-trend-icon" />
                 +0.2% from last month
               </p>
             </CardContent>
           </Card>
 
-          <Card className="bg-gradient-to-br from-blue-50 to-blue-100 border border-blue-200 shadow-md hover:shadow-lg transition-shadow">
-            <CardHeader className="flex flex-row items-center justify-between pb-2">
-              <CardTitle className="text-sm font-medium text-blue-900">Active Entities</CardTitle>
-              <div className="bg-blue-500 p-2 rounded-lg">
+          <Card className="manufacturer-stat-card manufacturer-stat-card--batches">
+            <CardHeader className="stat-card-header">
+              <CardTitle className="stat-card-title manufacturer-stat-card__title--blue">Active Entities</CardTitle>
+              <div className="stat-card-icon stat-card-icon-blue">
                 <TrendingUp className="h-5 w-5 text-white" />
               </div>
             </CardHeader>
-            <CardContent>
-              <div className="text-3xl font-bold text-blue-900">347</div>
-              <p className="text-xs text-blue-600 mt-1">Monitored organizations</p>
+            <CardContent className="stat-card-body">
+              <div className="stat-card-value stat-card-value--blue">347</div>
+              <p className="stat-card-subtext stat-card-subtext--blue">Monitored organizations</p>
             </CardContent>
           </Card>
 
-          <Card className="bg-gradient-to-br from-amber-50 to-amber-100 border border-amber-200 shadow-md hover:shadow-lg transition-shadow">
-            <CardHeader className="flex flex-row items-center justify-between pb-2">
-              <CardTitle className="text-sm font-medium text-amber-900">Active Alerts</CardTitle>
-              <div className="bg-amber-500 p-2 rounded-lg">
+          <Card className="manufacturer-stat-card manufacturer-stat-card--distributor-amber">
+            <CardHeader className="stat-card-header">
+              <CardTitle className="stat-card-title manufacturer-stat-card__title--amber">Active Alerts</CardTitle>
+              <div className="stat-card-icon stat-card-icon-amber">
                 <AlertCircle className="h-5 w-5 text-white" />
               </div>
             </CardHeader>
-            <CardContent>
-              <div className="text-3xl font-bold text-amber-900">12</div>
-              <p className="text-xs text-amber-600 mt-1">Requires attention</p>
+            <CardContent className="stat-card-body">
+              <div className="stat-card-value stat-card-value--amber">12</div>
+              <p className="stat-card-subtext stat-card-subtext--amber">Requires attention</p>
             </CardContent>
           </Card>
 
-          <Card className="bg-gradient-to-br from-violet-50 to-violet-100 border border-violet-200 shadow-md hover:shadow-lg transition-shadow">
-            <CardHeader className="flex flex-row items-center justify-between pb-2">
-              <CardTitle className="text-sm font-medium text-violet-900">Audits This Month</CardTitle>
-              <div className="bg-violet-500 p-2 rounded-lg">
+          <Card className="manufacturer-stat-card manufacturer-stat-card--distributor-purple">
+            <CardHeader className="stat-card-header">
+              <CardTitle className="stat-card-title manufacturer-stat-card__title--purple">Audits This Month</CardTitle>
+              <div className="stat-card-icon stat-card-icon-violet">
                 <FileText className="h-5 w-5 text-white" />
               </div>
             </CardHeader>
-            <CardContent>
-              <div className="text-3xl font-bold text-violet-900">48</div>
-              <p className="text-xs text-violet-600 mt-1">28 completed</p>
+            <CardContent className="stat-card-body">
+              <div className="stat-card-value stat-card-value--purple">48</div>
+              <p className="stat-card-subtext stat-card-subtext--purple">28 completed</p>
             </CardContent>
           </Card>
         </div>
 
         {/* Main Content */}
-        <Tabs defaultValue="overview" className="space-y-4">
-          <TabsList>
+        <Tabs defaultValue="overview" className="manufacturer-tabs">
+          <TabsList className="manufacturer-tabs-list">
             <TabsTrigger value="overview">Compliance Overview</TabsTrigger>
             <TabsTrigger value="audits">Audit Records</TabsTrigger>
             <TabsTrigger value="traceability">Traceability</TabsTrigger>
@@ -123,51 +125,54 @@ export default function RegulatoryDashboard() {
 
           {/* Compliance Overview */}
           <TabsContent value="overview" className="space-y-4">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-              <Card>
-                <CardHeader>
-                  <CardTitle>Compliance Trend</CardTitle>
-                  <CardDescription>System-wide compliance rate over time</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <ResponsiveContainer width="100%" height={300}>
-                    <LineChart data={complianceData}>
-                      <CartesianGrid strokeDasharray="3 3" />
-                      <XAxis dataKey="month" />
-                      <YAxis domain={[95, 100]} />
-                      <Tooltip />
-                      <Line type="monotone" dataKey="rate" stroke="#10B981" strokeWidth={2} />
-                    </LineChart>
-                  </ResponsiveContainer>
-                </CardContent>
-              </Card>
+            <div className="manufacturer-batches-full">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                <Card className="manufacturer-batches-card">
+                  <CardHeader>
+                    <CardTitle>Compliance Trend</CardTitle>
+                    <CardDescription>System-wide compliance rate over time</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <ResponsiveContainer width="100%" height={300}>
+                      <LineChart data={complianceData}>
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis dataKey="month" />
+                        <YAxis domain={[95, 100]} />
+                        <Tooltip />
+                        <Line type="monotone" dataKey="rate" stroke="#10B981" strokeWidth={2} />
+                      </LineChart>
+                    </ResponsiveContainer>
+                  </CardContent>
+                </Card>
 
-              <Card>
-                <CardHeader>
-                  <CardTitle>Violations by Category</CardTitle>
-                  <CardDescription>Recent compliance violations breakdown</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <ResponsiveContainer width="100%" height={300}>
-                    <BarChart data={violationsData} layout="vertical">
-                      <CartesianGrid strokeDasharray="3 3" />
-                      <XAxis type="number" />
-                      <YAxis dataKey="category" type="category" width={150} />
-                      <Tooltip />
-                      <Bar dataKey="count" fill="#EF4444" />
-                    </BarChart>
-                  </ResponsiveContainer>
-                </CardContent>
-              </Card>
+                <Card className="manufacturer-batches-card">
+                  <CardHeader>
+                    <CardTitle>Violations by Category</CardTitle>
+                    <CardDescription>Recent compliance violations breakdown</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <ResponsiveContainer width="100%" height={300}>
+                      <BarChart data={violationsData} layout="vertical">
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis type="number" />
+                        <YAxis dataKey="category" type="category" width={150} />
+                        <Tooltip />
+                        <Bar dataKey="count" fill="#EF4444" />
+                      </BarChart>
+                    </ResponsiveContainer>
+                  </CardContent>
+                </Card>
+              </div>
             </div>
 
-            <Card>
-              <CardHeader>
-                <CardTitle>Recent Alerts</CardTitle>
-                <CardDescription>Active compliance alerts requiring attention</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <Table>
+            <div className="manufacturer-batches-full">
+              <Card className="manufacturer-batches-card">
+                <CardHeader>
+                  <CardTitle>Recent Alerts</CardTitle>
+                  <CardDescription>Active compliance alerts requiring attention</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <Table>
                   <TableHeader>
                     <TableRow>
                       <TableHead>Alert ID</TableHead>
@@ -203,156 +208,163 @@ export default function RegulatoryDashboard() {
                 </Table>
               </CardContent>
             </Card>
+            </div>
           </TabsContent>
 
           {/* Audit Records */}
           <TabsContent value="audits" className="space-y-4">
-            <Card>
-              <CardHeader>
-                <div className="flex items-center justify-between">
-                  <div>
-                    <CardTitle>Audit Records</CardTitle>
-                    <CardDescription>Recent compliance audits and inspections</CardDescription>
+            <div className="manufacturer-batches-full">
+              <Card className="manufacturer-batches-card">
+                <CardHeader>
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <CardTitle>Audit Records</CardTitle>
+                      <CardDescription>Recent compliance audits and inspections</CardDescription>
+                    </div>
+                    <Button>
+                      <FileText className="h-4 w-4 mr-2" />
+                      Schedule Audit
+                    </Button>
                   </div>
-                  <Button>
-                    <FileText className="h-4 w-4 mr-2" />
-                    Schedule Audit
-                  </Button>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <div className="mb-4 flex gap-2">
-                  <Input placeholder="Search audits..." className="flex-1" />
-                  <Select defaultValue="all">
-                    <SelectTrigger className="w-[180px]">
-                      <SelectValue placeholder="Filter by type" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="all">All Types</SelectItem>
-                      <SelectItem value="manufacturer">Manufacturer</SelectItem>
-                      <SelectItem value="distributor">Distributor</SelectItem>
-                      <SelectItem value="retailer">Retailer</SelectItem>
-                      <SelectItem value="hospital">Hospital</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
+                </CardHeader>
+                <CardContent>
+                  <div className="mb-4 flex gap-2">
+                    <Input placeholder="Search audits..." className="flex-1" />
+                    <Select defaultValue="all">
+                      <SelectTrigger className="w-[180px]">
+                        <SelectValue placeholder="Filter by type" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="all">All Types</SelectItem>
+                        <SelectItem value="manufacturer">Manufacturer</SelectItem>
+                        <SelectItem value="distributor">Distributor</SelectItem>
+                        <SelectItem value="retailer">Retailer</SelectItem>
+                        <SelectItem value="hospital">Hospital</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
 
-                <Table>
-                  <TableHeader>
-                    <TableRow>
-                      <TableHead>Audit ID</TableHead>
-                      <TableHead>Entity</TableHead>
-                      <TableHead>Type</TableHead>
-                      <TableHead>Date</TableHead>
-                      <TableHead>Score</TableHead>
-                      <TableHead>Status</TableHead>
-                      <TableHead>Actions</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {auditRecords.map((audit) => (
-                      <TableRow key={audit.id}>
-                        <TableCell className="font-mono text-sm">{audit.id}</TableCell>
-                        <TableCell>{audit.entity}</TableCell>
-                        <TableCell>{audit.type}</TableCell>
-                        <TableCell>{audit.date}</TableCell>
-                        <TableCell>
-                          <div className="flex items-center gap-2">
-                            <span className="font-semibold">{audit.score}%</span>
-                            <div className="w-16 bg-gray-200 rounded-full h-2">
-                              <div
-                                className="bg-green-600 h-2 rounded-full"
-                                style={{ width: `${audit.score}%` }}
-                              />
-                            </div>
-                          </div>
-                        </TableCell>
-                        <TableCell>
-                          <Badge variant={audit.status === "Compliant" ? "default" : "outline"}>
-                            {audit.status === "Compliant" ? <CheckCircle className="h-3 w-3 mr-1" /> : null}
-                            {audit.status}
-                          </Badge>
-                        </TableCell>
-                        <TableCell>
-                          <Button size="sm" variant="outline">
-                            View Report
-                          </Button>
-                        </TableCell>
+                  <Table>
+                    <TableHeader>
+                      <TableRow>
+                        <TableHead>Audit ID</TableHead>
+                        <TableHead>Entity</TableHead>
+                        <TableHead>Type</TableHead>
+                        <TableHead>Date</TableHead>
+                        <TableHead>Score</TableHead>
+                        <TableHead>Status</TableHead>
+                        <TableHead>Actions</TableHead>
                       </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </CardContent>
-            </Card>
+                    </TableHeader>
+                    <TableBody>
+                      {auditRecords.map((audit) => (
+                        <TableRow key={audit.id}>
+                          <TableCell className="font-mono text-sm">{audit.id}</TableCell>
+                          <TableCell>{audit.entity}</TableCell>
+                          <TableCell>{audit.type}</TableCell>
+                          <TableCell>{audit.date}</TableCell>
+                          <TableCell>
+                            <div className="flex items-center gap-2">
+                              <span className="font-semibold">{audit.score}%</span>
+                              <div className="w-16 bg-gray-200 rounded-full h-2">
+                                <div
+                                  className="bg-green-600 h-2 rounded-full"
+                                  style={{ width: `${audit.score}%` }}
+                                />
+                              </div>
+                            </div>
+                          </TableCell>
+                          <TableCell>
+                            <Badge variant={audit.status === "Compliant" ? "default" : "outline"}>
+                              {audit.status === "Compliant" ? <CheckCircle className="h-3 w-3 mr-1" /> : null}
+                              {audit.status}
+                            </Badge>
+                          </TableCell>
+                          <TableCell>
+                            <Button size="sm" variant="outline">
+                              View Report
+                            </Button>
+                          </TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </CardContent>
+              </Card>
+            </div>
           </TabsContent>
 
           {/* Traceability */}
           <TabsContent value="traceability" className="space-y-4">
-            <Card>
-              <CardHeader>
-                <CardTitle>Product Traceability</CardTitle>
-                <CardDescription>Track products through the entire supply chain</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="mb-4 flex gap-2">
-                  <Input placeholder="Enter Batch ID or Product Name" className="flex-1" />
-                  <Button>
-                    <Search className="h-4 w-4 mr-2" />
-                    Search
-                  </Button>
-                </div>
-
-                <Table>
-                  <TableHeader>
-                    <TableRow>
-                      <TableHead>Batch ID</TableHead>
-                      <TableHead>Product</TableHead>
-                      <TableHead>Manufacturer</TableHead>
-                      <TableHead>Distributor</TableHead>
-                      <TableHead>Retailer/Hospital</TableHead>
-                      <TableHead>Status</TableHead>
-                      <TableHead>Actions</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {traceabilityRecords.map((record) => (
-                      <TableRow key={record.batch}>
-                        <TableCell className="font-mono text-sm">{record.batch}</TableCell>
-                        <TableCell>{record.product}</TableCell>
-                        <TableCell>{record.manufacturer}</TableCell>
-                        <TableCell>{record.distributor}</TableCell>
-                        <TableCell>{record.retailer}</TableCell>
-                        <TableCell>
-                          <Badge variant={record.status === "Complete" ? "default" : "secondary"}>
-                            {record.status}
-                          </Badge>
-                        </TableCell>
-                        <TableCell>
-                          <Button size="sm" variant="outline">
-                            Full History
-                          </Button>
-                        </TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-blue-50 border-blue-200">
-              <CardContent className="pt-6">
-                <div className="flex items-start gap-3">
-                  <Shield className="h-5 w-5 text-blue-600 mt-1" />
-                  <div>
-                    <h4 className="font-semibold text-blue-900 mb-1">End-to-End Traceability</h4>
-                    <p className="text-sm text-blue-800">
-                      Our system provides complete visibility from manufacturer to end consumer, ensuring product authenticity,
-                      regulatory compliance, and patient safety at every step of the pharmaceutical supply chain.
-                    </p>
+            <div className="manufacturer-batches-full">
+              <Card className="manufacturer-batches-card">
+                <CardHeader>
+                  <CardTitle>Product Traceability</CardTitle>
+                  <CardDescription>Track products through the entire supply chain</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="mb-4 flex gap-2">
+                    <Input placeholder="Enter Batch ID or Product Name" className="flex-1" />
+                    <Button>
+                      <Search className="h-4 w-4 mr-2" />
+                      Search
+                    </Button>
                   </div>
-                </div>
-              </CardContent>
-            </Card>
+
+                  <Table>
+                    <TableHeader>
+                      <TableRow>
+                        <TableHead>Batch ID</TableHead>
+                        <TableHead>Product</TableHead>
+                        <TableHead>Manufacturer</TableHead>
+                        <TableHead>Distributor</TableHead>
+                        <TableHead>Retailer/Hospital</TableHead>
+                        <TableHead>Status</TableHead>
+                        <TableHead>Actions</TableHead>
+                      </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                      {traceabilityRecords.map((record) => (
+                        <TableRow key={record.batch}>
+                          <TableCell className="font-mono text-sm">{record.batch}</TableCell>
+                          <TableCell>{record.product}</TableCell>
+                          <TableCell>{record.manufacturer}</TableCell>
+                          <TableCell>{record.distributor}</TableCell>
+                          <TableCell>{record.retailer}</TableCell>
+                          <TableCell>
+                            <Badge variant={record.status === "Complete" ? "default" : "secondary"}>
+                              {record.status}
+                            </Badge>
+                          </TableCell>
+                          <TableCell>
+                            <Button size="sm" variant="outline">
+                              Full History
+                            </Button>
+                          </TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </CardContent>
+              </Card>
+            </div>
+
+            <div className="manufacturer-batches-full">
+              <Card className="bg-blue-50 border-blue-200 manufacturer-batches-card">
+                <CardContent className="pt-6">
+                  <div className="flex items-start gap-3">
+                    <Shield className="h-5 w-5 text-blue-600 mt-1" />
+                    <div>
+                      <h4 className="font-semibold text-blue-900 mb-1">End-to-End Traceability</h4>
+                      <p className="text-sm text-blue-800">
+                        Our system provides complete visibility from manufacturer to end consumer, ensuring product authenticity,
+                        regulatory compliance, and patient safety at every step of the pharmaceutical supply chain.
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
           </TabsContent>
 
           {/* Generate Reports */}

@@ -1894,11 +1894,6 @@ html {
 
 
 /* Custom Component Styles */
-.dashboard-layout {
-  min-height: 100vh;
-  background: linear-gradient(to bottom right, #f9fafb, #f3f4f6);
-}
-
 .dashboard-header {
   background-color: #ffffff;
   border-bottom: 1px solid #e5e7eb;

@@ -1,4 +1,6 @@
 import DashboardLayout from "../components/DashboardLayout.jsx";
+import "../../styles/dashboards.css";
+import "../../styles/dashboards.css";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/ui/card.jsx";
 import { Button } from "../components/ui/button.jsx";
 import { Input } from "../components/ui/input.jsx";
@@ -47,65 +49,65 @@ export default function RetailerDashboard() {
       userRole="Product Verification & Inventory"
       icon={<Store className="h-6 w-6 text-white" />}
     >
-      <div className="space-y-6">
+      <div className="manufacturer-dashboard">
         {/* Stats Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          <Card className="bg-gradient-to-br from-sky-50 to-sky-100 border border-sky-200 shadow-md hover:shadow-lg transition-shadow">
-            <CardHeader className="flex flex-row items-center justify-between pb-2">
-              <CardTitle className="text-sm font-medium text-sky-900">Current Stock</CardTitle>
-              <div className="bg-sky-500 p-2 rounded-lg">
+        <div className="manufacturer-stats-row">
+          <Card className="manufacturer-stat-card manufacturer-stat-card--retailer-sky">
+            <CardHeader className="stat-card-header">
+              <CardTitle className="stat-card-title manufacturer-stat-card__title--sky">Current Stock</CardTitle>
+              <div className="stat-card-icon stat-card-icon-sky">
                 <Package className="h-5 w-5 text-white" />
               </div>
             </CardHeader>
-            <CardContent>
-              <div className="text-3xl font-bold text-sky-900">53K</div>
-              <p className="text-xs text-sky-600 mt-1">Units available</p>
+            <CardContent className="stat-card-body">
+              <div className="stat-card-value stat-card-value--sky">53K</div>
+              <p className="stat-card-subtext stat-card-subtext--sky">Units available</p>
             </CardContent>
           </Card>
 
-          <Card className="bg-gradient-to-br from-teal-50 to-teal-100 border border-teal-200 shadow-md hover:shadow-lg transition-shadow">
-            <CardHeader className="flex flex-row items-center justify-between pb-2">
-              <CardTitle className="text-sm font-medium text-teal-900">Verified Batches</CardTitle>
-              <div className="bg-teal-500 p-2 rounded-lg">
+          <Card className="manufacturer-stat-card manufacturer-stat-card--retailer-teal">
+            <CardHeader className="stat-card-header">
+              <CardTitle className="stat-card-title manufacturer-stat-card__title--teal">Verified Batches</CardTitle>
+              <div className="stat-card-icon stat-card-icon-teal">
                 <ShieldCheck className="h-5 w-5 text-white" />
               </div>
             </CardHeader>
-            <CardContent>
-              <div className="text-3xl font-bold text-teal-900">147</div>
-              <p className="text-xs text-teal-600 mt-1">Authenticated products</p>
+            <CardContent className="stat-card-body">
+              <div className="stat-card-value stat-card-value--teal">147</div>
+              <p className="stat-card-subtext stat-card-subtext--teal">Authenticated products</p>
             </CardContent>
           </Card>
 
-          <Card className="bg-gradient-to-br from-orange-50 to-orange-100 border border-orange-200 shadow-md hover:shadow-lg transition-shadow">
-            <CardHeader className="flex flex-row items-center justify-between pb-2">
-              <CardTitle className="text-sm font-medium text-orange-900">Expiry Alerts</CardTitle>
-              <div className="bg-orange-500 p-2 rounded-lg">
+          <Card className="manufacturer-stat-card manufacturer-stat-card--retailer-orange">
+            <CardHeader className="stat-card-header">
+              <CardTitle className="stat-card-title manufacturer-stat-card__title--orange">Expiry Alerts</CardTitle>
+              <div className="stat-card-icon stat-card-icon-orange">
                 <AlertTriangle className="h-5 w-5 text-white" />
               </div>
             </CardHeader>
-            <CardContent>
-              <div className="text-3xl font-bold text-orange-900">8</div>
-              <p className="text-xs text-orange-600 mt-1">Items near expiry</p>
+            <CardContent className="stat-card-body">
+              <div className="stat-card-value stat-card-value--orange">8</div>
+              <p className="stat-card-subtext stat-card-subtext--orange">Items near expiry</p>
             </CardContent>
           </Card>
 
-          <Card className="bg-gradient-to-br from-pink-50 to-pink-100 border border-pink-200 shadow-md hover:shadow-lg transition-shadow">
-            <CardHeader className="flex flex-row items-center justify-between pb-2">
-              <CardTitle className="text-sm font-medium text-pink-900">Weekly Sales</CardTitle>
-              <div className="bg-pink-500 p-2 rounded-lg">
+          <Card className="manufacturer-stat-card manufacturer-stat-card--retailer-pink">
+            <CardHeader className="stat-card-header">
+              <CardTitle className="stat-card-title manufacturer-stat-card__title--pink">Weekly Sales</CardTitle>
+              <div className="stat-card-icon stat-card-icon-pink">
                 <Bell className="h-5 w-5 text-white" />
               </div>
             </CardHeader>
-            <CardContent>
-              <div className="text-3xl font-bold text-pink-900">1,167</div>
-              <p className="text-xs text-pink-600 mt-1">Units sold</p>
+            <CardContent className="stat-card-body">
+              <div className="stat-card-value stat-card-value--pink">1,167</div>
+              <p className="stat-card-subtext stat-card-subtext--pink">Units sold</p>
             </CardContent>
           </Card>
         </div>
 
         {/* Main Content */}
-        <Tabs defaultValue="received" className="space-y-4">
-          <TabsList>
+        <Tabs defaultValue="received" className="manufacturer-tabs">
+          <TabsList className="manufacturer-tabs-list">
             <TabsTrigger value="received">Received Products</TabsTrigger>
             <TabsTrigger value="verify">Verify Authenticity</TabsTrigger>
             <TabsTrigger value="stock">Stock Management</TabsTrigger>
@@ -114,13 +116,14 @@ export default function RetailerDashboard() {
 
           {/* Received Products */}
           <TabsContent value="received" className="space-y-4">
-            <Card>
-              <CardHeader>
-                <CardTitle>Recently Received Products</CardTitle>
-                <CardDescription>Manage incoming inventory and verify authenticity</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <Table>
+            <div className="manufacturer-batches-full">
+              <Card className="manufacturer-batches-card">
+                <CardHeader>
+                  <CardTitle>Recently Received Products</CardTitle>
+                  <CardDescription>Manage incoming inventory and verify authenticity</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <Table>
                   <TableHeader>
                     <TableRow>
                       <TableHead>Receipt ID</TableHead>
@@ -134,96 +137,100 @@ export default function RetailerDashboard() {
                       <TableHead>Actions</TableHead>
                     </TableRow>
                   </TableHeader>
-                  <TableBody>
-                    {receivedProducts.map((product) => (
-                      <TableRow key={product.id}>
-                        <TableCell className="font-mono text-sm">{product.id}</TableCell>
-                        <TableCell className="font-mono text-sm">{product.batch}</TableCell>
-                        <TableCell>{product.product}</TableCell>
-                        <TableCell>{product.from}</TableCell>
-                        <TableCell>{product.quantity.toLocaleString()}</TableCell>
-                        <TableCell>{product.received}</TableCell>
-                        <TableCell>{product.expiry}</TableCell>
-                        <TableCell>
-                          {product.verified ? (
-                            <Badge variant="default" className="bg-green-600">
-                              <CheckCircle className="h-3 w-3 mr-1" />
-                              Verified
-                            </Badge>
-                          ) : (
-                            <Badge variant="outline" className="text-orange-600">
-                              Pending
-                            </Badge>
-                          )}
-                        </TableCell>
-                        <TableCell>
-                          <Button size="sm" variant="outline">
-                            View
-                          </Button>
-                        </TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </CardContent>
-            </Card>
+                    <TableBody>
+                      {receivedProducts.map((product) => (
+                        <TableRow key={product.id}>
+                          <TableCell className="font-mono text-sm">{product.id}</TableCell>
+                          <TableCell className="font-mono text-sm">{product.batch}</TableCell>
+                          <TableCell>{product.product}</TableCell>
+                          <TableCell>{product.from}</TableCell>
+                          <TableCell>{product.quantity.toLocaleString()}</TableCell>
+                          <TableCell>{product.received}</TableCell>
+                          <TableCell>{product.expiry}</TableCell>
+                          <TableCell>
+                            {product.verified ? (
+                              <Badge variant="default" className="bg-green-600">
+                                <CheckCircle className="h-3 w-3 mr-1" />
+                                Verified
+                              </Badge>
+                            ) : (
+                              <Badge variant="outline" className="text-orange-600">
+                                Pending
+                              </Badge>
+                            )}
+                          </TableCell>
+                          <TableCell>
+                            <Button size="sm" variant="outline">
+                              View
+                            </Button>
+                          </TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </CardContent>
+              </Card>
+            </div>
           </TabsContent>
 
           {/* Verify Authenticity */}
           <TabsContent value="verify" className="space-y-4">
-            <Card>
-              <CardHeader>
-                <CardTitle>Verify Product Authenticity</CardTitle>
-                <CardDescription>Scan QR code or enter batch number to verify product</CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <div className="flex gap-2">
-                  <Input placeholder="Enter Batch Number" className="flex-1" />
-                  <Button>
-                    Verify
-                  </Button>
-                  <Button variant="outline">
-                    <Scan className="h-4 w-4 mr-2" />
-                    Scan QR
-                  </Button>
-                </div>
+            <div className="manufacturer-batches-full">
+              <Card className="manufacturer-batches-card">
+                <CardHeader>
+                  <CardTitle>Verify Product Authenticity</CardTitle>
+                  <CardDescription>Scan QR code or enter batch number to verify product</CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-6">
+                  <div className="flex gap-2">
+                    <Input placeholder="Enter Batch Number" className="flex-1" />
+                    <Button>
+                      Verify
+                    </Button>
+                    <Button variant="outline">
+                      <Scan className="h-4 w-4 mr-2" />
+                      Scan QR
+                    </Button>
+                  </div>
 
-                <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 bg-gray-50">
-                  <div className="text-center">
-                    <ShieldCheck className="h-16 w-16 mx-auto mb-4 text-gray-400" />
-                    <h3 className="font-semibold text-lg mb-2">Verify Product Authenticity</h3>
-                    <p className="text-gray-600 mb-4">Scan the QR code on the product packaging or enter the batch number above</p>
-                    <div className="bg-white rounded-lg p-4 inline-block border">
-                      <div className="w-48 h-48 bg-gray-200 rounded flex items-center justify-center">
-                        <Scan className="h-12 w-12 text-gray-400" />
+                  <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 bg-gray-50">
+                    <div className="text-center">
+                      <ShieldCheck className="h-16 w-16 mx-auto mb-4 text-gray-400" />
+                      <h3 className="font-semibold text-lg mb-2">Verify Product Authenticity</h3>
+                      <p className="text-gray-600 mb-4">Scan the QR code on the product packaging or enter the batch number above</p>
+                      <div className="bg-white rounded-lg p-4 inline-block border">
+                        <div className="w-48 h-48 bg-gray-200 rounded flex items-center justify-center">
+                          <Scan className="h-12 w-12 text-gray-400" />
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
 
-                <Card className="bg-blue-50 border-blue-200">
-                  <CardContent className="pt-6">
-                    <div className="flex items-start gap-3">
-                      <ShieldCheck className="h-5 w-5 text-blue-600 mt-1" />
-                      <div>
-                        <h4 className="font-semibold text-blue-900 mb-1">Verification Benefits</h4>
-                        <ul className="text-sm text-blue-800 space-y-1">
-                          <li>• Confirm product authenticity and prevent counterfeit</li>
-                          <li>• Track complete supply chain history</li>
-                          <li>• Verify manufacturer, batch, and expiry details</li>
-                          <li>• Ensure regulatory compliance (FDA/WHO)</li>
-                        </ul>
+                  <Card className="bg-blue-50 border-blue-200">
+                    <CardContent className="pt-6">
+                      <div className="flex items-start gap-3">
+                        <ShieldCheck className="h-5 w-5 text-blue-600 mt-1" />
+                        <div>
+                          <h4 className="font-semibold text-blue-900 mb-1">Verification Benefits</h4>
+                          <ul className="text-sm text-blue-800 space-y-1">
+                            <li>• Confirm product authenticity and prevent counterfeit</li>
+                            <li>• Track complete supply chain history</li>
+                            <li>• Verify manufacturer, batch, and expiry details</li>
+                            <li>• Ensure regulatory compliance (FDA/WHO)</li>
+                          </ul>
+                        </div>
                       </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </CardContent>
-            </Card>
+                    </CardContent>
+                  </Card>
+                </CardContent>
+              </Card>
+            </div>
           </TabsContent>
 
-          {/* Stock Management */}
-          <TabsContent value="stock" className="space-y-4">
-            <Card>
+        {/* Stock Management */}
+        <TabsContent value="stock" className="space-y-4">
+          <div className="manufacturer-batches-full">
+            <Card className="manufacturer-batches-card">
               <CardHeader>
                 <CardTitle>Stock Levels by Category</CardTitle>
                 <CardDescription>Monitor inventory levels across product categories</CardDescription>
@@ -244,6 +251,7 @@ export default function RetailerDashboard() {
                 </div>
               </CardContent>
             </Card>
+          </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
               <Card>
@@ -301,9 +309,10 @@ export default function RetailerDashboard() {
             </div>
           </TabsContent>
 
-          {/* Analytics */}
-          <TabsContent value="analytics" className="space-y-4">
-            <Card>
+        {/* Analytics */}
+        <TabsContent value="analytics" className="space-y-4">
+          <div className="manufacturer-batches-full">
+            <Card className="manufacturer-batches-card">
               <CardHeader>
                 <CardTitle>Weekly Sales Performance</CardTitle>
                 <CardDescription>Daily sales units over the past week</CardDescription>
@@ -320,6 +329,7 @@ export default function RetailerDashboard() {
                 </ResponsiveContainer>
               </CardContent>
             </Card>
+          </div>
           </TabsContent>
         </Tabs>
       </div>
